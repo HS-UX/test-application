@@ -1,0 +1,64 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Check your email address
+      </h1>
+
+      <form class="form" action="/confirmed-email" method="post">
+
+        <p>Email address: {{ data['email'] }}</p>
+          
+        <p> We’ll send you a link to confirm your email address.</p>
+
+        <p class="govuk-heading-m">
+          Is this the email address you want to use?</p>
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{{ govukRadios({
+  name: "check-your-email-address",
+  fieldset: {
+    legend: {
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  items: [
+    {
+      value: "Yes",
+      text: "Yes, this is the email address I want to use"
+    },
+    {
+      value: "No",
+      text: "No, I need to change this email"
+    },
+    
+    {
+      
+    }
+  ]
+}) }}
+
+        
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
