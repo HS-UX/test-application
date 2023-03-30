@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+  
+
+      <form class="form" action="/check-01" method="post">
+
+
+
+        {% from "govuk/components/input/macro.njk" import govukInput %}
+        {% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+        
+        
+        {% call govukFieldset({
+          legend: {
+            text: "Who can we contact?",
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        <p>We will use these details to contact you about your loans application.</p>
+        
+          {{ govukInput({
+            label: {
+              text: 'Full name'
+            },
+            id: "full-name",
+            name: "full-name",
+            autocomplete: "full-name"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: 'Email address'
+            },
+            id: "email-address",
+            name: "email-address",
+            autocomplete: "email-address"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Telephone number"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "telephone-number",
+            name: "telephone-number",
+            autocomplete: "telephone-number"
+          }) }}
+        
+          
+
+        
+        {% endcall %}
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
